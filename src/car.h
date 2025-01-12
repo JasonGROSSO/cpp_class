@@ -30,37 +30,35 @@ Car::Car(std::string& brand,std::string& model, int year, double price) {
     this->year = year;
     this->price = price;
 }
+
+
 std::string Car::getBrand(){
     return brand;
 }
-
 std::string Car::getModel(){
     return model;
 }
-
 int Car::getYear(){
     return year;
 }
-
 double Car::getPrice(){
     return price;
 }
 
+
 void Car::setBrand(std::string& brand) {
     this->brand = brand;
 }
-
 void Car::setModel(std::string& model) {
     this->model = model;
 }
-
 void Car::setYear(int year) {
     this->year = year;
 }
-
 void Car::setPrice(double price) {
     this->price = price;
 }
+
 
 void Car::printCar(Car& car) {
     std::cout << "Brand: " << car.getBrand() << "\n";

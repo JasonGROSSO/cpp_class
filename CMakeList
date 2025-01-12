@@ -1,0 +1,16 @@
+CC = clang
+CFLAGS = -Wall -g
+SRC = src/main.cpp src/car.h src/storage.h
+OBJ = $(SRC:.cpp=.o)
+EXEC = car_storage_system
+
+all: $(EXEC)
+
+$(EXEC): $(OBJ)
+	$(CC) $(OBJ) -o $(EXEC)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(EXEC)

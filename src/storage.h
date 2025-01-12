@@ -1,83 +1,59 @@
 #include <iostream>
 #include "car.h"
 
-class Node {
-public:
-    Node() = default;
-    Node(Car car);
-    void setData(Car car);
-    void setNext(Node* next);
-    int getCar();
-    Node* getNext();
-private:
-    Car car;
-    Node* next;
-};
-
-Node::Node(Car car) {
-    setData(car);
-    setNext(nullptr);
-}
-
-void Node::setData(Car car) {
-    this->car = car;
-}
-
-void Node::setNext(Node* next) {
-    this->next = next;
-}
-
-Car Node::getCar() {
-    return car;
-}
-
-Node* Node::getNext() {
-    return next;
-}
+#define SIZE_N 100
 
 class Storage {
-    public:
-        Storage();
-        void addCar(Car car);
-        void removeCar(Car car);
-        void printCars();
+private:
+    Car storage[SIZE_N];
+    int size;
+    int count;
 
-    private:
-        Node* head;
+public:
+    Storage();
+
+    bool addCar(Car& car);
+    Car* getCar(int index);
+    bool updateCar(int index, Car& car);
+    bool removeCar(int index);
+    bool printAllCars();
+    int getSize();
 };
 
-Storage::Storage() {
-    head = nullptr;
+bool Storage::addCar(Car& car) {
+    if (size < SIZE_N) {
+        storage[size++] = car;
+        return true;
+    }
+    return false;
 }
 
-void Storage::addCar(Car car) {
-    Node* newNode = new Node(car);
-    newNode->setNext(head);
-    head = newNode;
+Car* Storage::getCar(int index) {
+    if (index >= 0 && index < size) {
+        return &storage[index];
+    }
+    return nullptr;
 }
 
-void Storage::removeCar(Car car) {
-    Node* current = head;
-    Node* previous = nullptr;
-    while (current != nullptr) {
-        if (current->getCar() == car) {
-            if (previous == nullptr) {
-                head = current->getNext();
-            } else {
-                previous->setNext(current->getNext());
-            }
-            delete current;
-            return;
+bool Storage::updateCar(int index, Car& car) {
+    if (index >= 0 && index < size) {
+        storage[index] = car;
+        return true;
+    }
+    return false;
+}
+
+bool Storage::removeCar(int index) {
+    if (index >= 0 && index < size) {
+        for (int i = index; i < size - 1; ++i) {
+            storage[i] = storage[i + 1];
         }
-        previous = current;
-        current = current->getNext();
+        --size;
+        return true;
     }
+    return false;
 }
 
-void Storage::printCars() {
-    Node* current = head;
-    while (current != nullptr) {
-        std::cout << current->getCar() << std::endl;
-        current = current->getNext();
-    }
+int Storage::getSize(){
+    return size;
 }

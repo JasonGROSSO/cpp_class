@@ -21,18 +21,18 @@ int main() {
 
         switch (choice) {
             case 1: {
-                std::string make, model;
+                std::string brand, model;
                 int year;
                 double price;
-                std::cout << "Enter make: ";
-                std::cin >> make;
+                std::cout << "Enter brand: ";
+                std::cin >> brand;
                 std::cout << "Enter model: ";
                 std::cin >> model;
                 std::cout << "Enter year: ";
                 std::cin >> year;
                 std::cout << "Enter price: ";
                 std::cin >> price;
-                storage.addCar(Car(make, model, year, price));
+                storage.addCar(Car(brand, model, year, price));
                 break;
             }
             case 2: {
@@ -42,7 +42,7 @@ int main() {
                 Car* car = storage.getCar(index);
                 if (car != nullptr) {
                     std::cout << "Car found: \n";
-                    printCar(*car);
+                    Car::printCar(*car);
                 } else {
                     std::cout << "Car not found.\n";
                 }

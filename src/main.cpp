@@ -32,7 +32,8 @@ int main() {
                 std::cin >> year;
                 std::cout << "Enter price: ";
                 std::cin >> price;
-                storage.addCar(Car(brand, model, year, price));
+                Car* newCar = new Car(brand, model, year, price);
+                storage.addCar(newCar);
                 break;
             }
             case 2: {
@@ -42,7 +43,7 @@ int main() {
                 Car* car = storage.getCar(index);
                 if (car != nullptr) {
                     std::cout << "Car found: \n";
-                    Car::printCar(*car);
+                    car->printCar();
                 } else {
                     std::cout << "Car not found.\n";
                 }

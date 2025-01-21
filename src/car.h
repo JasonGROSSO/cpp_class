@@ -9,6 +9,7 @@ private:
     double price;
 
 public:
+    Car();
     Car(std::string& brand, std::string& model, int year, double price);
     
     std::string getBrand();
@@ -21,7 +22,7 @@ public:
     void setYear(int year);
     void setPrice(double price);
 
-    void printCar(Car& car);
+    void printCar();
 };
 
 Car::Car(std::string& brand,std::string& model, int year, double price) {
@@ -60,9 +61,9 @@ void Car::setPrice(double price) {
 }
 
 
-void Car::printCar(Car& car) {
-    std::cout << "Brand: " << car.getBrand() << "\n";
-    std::cout << "Model: " << car.getModel() << "\n";
-    std::cout << "Year: " << car.getYear() << "\n";
-    std::cout << "Price: " << car.getPrice() << "\n";
+void Car::printCar() {
+    std::cout << "Brand: " << getBrand() << "\n";
+    std::cout << "Model: " << getModel() << "\n";
+    std::cout << "Year: " << getYear() << "\n";
+    std::cout << "Price: " << getPrice() << "\n";
 }

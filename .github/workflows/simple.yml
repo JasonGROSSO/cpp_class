@@ -27,7 +27,7 @@ jobs:
                     echo "Checking out the repository"
                     echo "Repository: ${{ github.repository }} has been checked out"
     build:
-        runs-on: self-hosted, linux, x64
+        runs-on: [self-hosted, linux, x64]
         needs: system_requirements
         steps:
             - name: Getting Google Test

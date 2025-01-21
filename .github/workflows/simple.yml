@@ -10,7 +10,7 @@ on:
 
 jobs:
     system_requirements:
-        runs-on: self-hosted, linux, x64
+        runs-on: [self-hosted, linux, x64]
         steps:
             - name: Instal software requirements
               run: |  
